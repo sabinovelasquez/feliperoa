@@ -1,0 +1,44 @@
+@import 'functions';
+@import 'colors';
+@import 'header';
+
+header{
+	min-height: 620px;
+	background-size:cover!important;
+	color:white;
+	border-bottom: 4px solid $yellow;
+	.title{
+		padding: 20%;
+		font-size: .7em;
+	}
+	h1{
+		margin-top: 120px;
+		font-size: 6em;
+		margin: 0;
+		color:$yellow;
+	}
+	h2{
+		font-family: 'Cantarell', sans-serif;
+		text-transform: none;
+		font-size: 1.8em;
+		margin: 0;
+		line-height: 0;
+	}
+	.btn{
+	    width: 200px;
+	    color:white;
+	    position: relative;
+	    left: -100px;
+	    margin: 40px 0 0 50%;
+	    background: rgba(#000, .6);
+	    @include transition(all .3s ease);
+	    i{
+	    	float:left;
+	    	width: 100%;
+	    }
+	    &:hover{
+	    	color:$yellow;
+	    	background: rgba(#000, 1);
+	    }
+	}
+}
