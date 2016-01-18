@@ -4,16 +4,25 @@
       My Work 
     .col-sm-7{ :'ng-controller' => 'scCtrl' }
       %h3.text-center
+        %small
+          %i.fa.fa-star
         %i.fa.fa-soundcloud
+        %small
+          %i.fa.fa-star
       .player{ :'ng-bind-html' => 'html | scplayer' }
     .col-sm-5{ :'ng-controller' => 'ytCtrl' }
       %h3.text-center
+        %small
+          %i.fa.fa-star
         %i.fa.fa-youtube
+        %small
+          %i.fa.fa-star
       .video{ :'ng-repeat' => 'video in videos ' }
         .col-xs-3.vid
           .hover
             %i.fa.fa-play
-          %img.img-responsive{ :'ng-src' => '{{ video.thumbnails.default.url }}' }
+            %a{ :'href' => 'http://youtube.com/watch?v={{ video.id }}', :'target' => '_blank' }
+              %img.img-responsive{ :'ng-src' => '{{ video.thumbnails.default.url }}' }
         .col-xs-9
           %h4
             {{ video.title }}

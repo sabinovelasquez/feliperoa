@@ -123,7 +123,9 @@ var app = angular
       $scope.getVideoId = function(videoId) {
         $http.jsonp( 'https://www.googleapis.com/youtube/v3/videos?id='+videoId+'&part=snippet,contentDetails,status&key=AIzaSyBdVTgDKI28TVldzE_JNKJpkDnTHRkANPY&callback=JSON_CALLBACK')
         .success(function(response) {
-          arrVids.push(response.items[0].snippet);
+          var vid = response.items[0].snippet;
+          vid.id = videoId;
+          arrVids.push(vid);
         });
       };
       $scope.videos = arrVids;
@@ -136,7 +138,6 @@ var app = angular
       $http.jsonp( instagram_json )
         .success(function(response) {
           $scope.photos = response.data;
-          console.log(response.data)
         });
     }
   ]);

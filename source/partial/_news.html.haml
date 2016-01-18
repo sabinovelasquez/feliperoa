@@ -5,7 +5,11 @@
 		.row
 			.fb.col-sm-6{ :'ng-controller' => 'fbCtrl' }
 				%h3.text-center
+					%small
+						%i.fa.fa-star 
 					%i.fa.fa-facebook
+					%small
+						%i.fa.fa-star
 				%p.text-center{ :'ng-hide' => 'fbfeed' }
 					Loading timeline...
 				.narrow
@@ -16,7 +20,11 @@
 						%hr
 			.tw.col-sm-6{ :'ng-controller' => 'twCtrl' }
 				%h3.text-center
+					%small
+						%i.fa.fa-star
 					%i.fa.fa-twitter
+					%small
+						%i.fa.fa-star
 				%p.text-center{ :'ng-hide' => 'twfeed' }
 					Loading tweets...
 				.narrow
