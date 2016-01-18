@@ -1,0 +1,14 @@
+@import 'functions';
+@import 'colors';
+@import 'header';
+
+.news{
+	background: url('../img/black_denim.png');
+	color: white;
+	h2{
+		color: $yellow
+	}
+	h3{
+		color:white;
+	}
+}

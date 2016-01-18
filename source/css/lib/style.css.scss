@@ -1,6 +1,8 @@
 @import 'functions';
 @import 'colors';
 @import 'header';
+@import 'about';
+@import 'news';
 
 body{
 	font-family: 'Cantarell', sans-serif;
@@ -8,4 +10,8 @@ body{
 h1, h2, h3, h4, h5{
 	text-transform: uppercase;
 	font-family: 'Fjalla One', sans-serif;
+}
+section{
+	margin: 40px 0 40px 0;
+	padding: 40px 0 40px 0;
 }

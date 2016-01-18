@@ -1,0 +1,20 @@
+%section.news{ :'ng-controller' => 'socialCtrl' }
+	.container
+		%h2.text-center
+			News
+		.row
+			.col-sm-6
+				%h3.text-center
+					%i.fa.fa-facebook
+			.col-sm-6
+				%h3.text-center
+					%i.fa.fa-twitter
+				%p.text-center{ :'ng-hide' => 'feed' }
+					Loading tweets...
+				#tweets.narrow
+					.item{ :'ng-repeat' => 'tweet in feed.tweets | limitTo: 5 ' }
+						%p.text-center
+							.tweet{ :'ng-bind-html' => 'tweet.text | linky' }
+							.date.text-center
+								{{tweet.updated}}
+						%hr
