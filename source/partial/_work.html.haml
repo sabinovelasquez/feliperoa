@@ -1,0 +1,22 @@
+%section.work
+  .container
+    %h2.text-center
+      My Work 
+    .col-sm-7{ :'ng-controller' => 'scCtrl' }
+      %h3.text-center
+        %i.fa.fa-soundcloud
+      .player{ :'ng-bind-html' => 'html | scplayer' }
+    .col-sm-5{ :'ng-controller' => 'ytCtrl' }
+      %h3.text-center
+        %i.fa.fa-youtube
+      .video{ :'ng-repeat' => 'video in videos ' }
+        .col-sm-4
+          %img.img-responsive{ :'ng-src' => '{{ video.snippet.thumbnails.default.url }}' }
+        .col-sm-8
+          %h4
+            {{ video.snippet.title }}
+          %p
+            {{ video.snippet.description | limitTo: 50}}
+            %small{ :'ng-show' => 'video.snippet.description.length > 50' }...
+
+          %hr

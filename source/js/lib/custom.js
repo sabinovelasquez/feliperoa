@@ -3,6 +3,13 @@
 var app = angular
 
 	.module('app', ['ngAnimate','ui.bootstrap', 'angular-parallax', 'duScroll', 'ngTweets'])
+  .filter('scplayer', ['$sce',
+    function ($sce) {
+      return function (str) {
+        return $sce.trustAsHtml(str);
+      }
+    }
+  ])
 	.filter('linkytw', ['$sce',
     function ($sce) {
       return function (str) {
@@ -85,3 +92,45 @@ var app = angular
       $scope.getPosts();
     }
   ])
+  .controller('scCtrl', [ '$scope', '$http',
+    function($scope, $http) {
+      var scUrl = 'http://soundcloud.com/oembed?format=js&url=https://soundcloud.com/felipe-acaro&callback=JSON_CALLBACK';
+      $scope.getTracks = function() {
+        $http.jsonp( scUrl )
+        .success(function(response) {
+          $scope.html = response.html;
+        });
+      };
+      $scope.getTracks();
+    }
+  ])
+  .controller('ytCtrl', [ '$scope', '$http',
+    function($scope, $http) {
+      var ytUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=UUwQNQR-59PltETBr4u59ZmQ&key=AIzaSyBdVTgDKI28TVldzE_JNKJpkDnTHRkANPY&callback=JSON_CALLBACK';
+      var arrVids = [];
+      $scope.getVideos = function() {
+        $http.jsonp( ytUrl )
+        .success(function(response) {
+          $scope.infoVids = response.items;
+          angular.forEach(response.items, function(value, key){
+
+            $scope.getVideoId(value.contentDetails.videoId);
+            
+          });
+
+          
+        });
+      };
+      $scope.getVideoId = function(videoId) {
+        $http.jsonp( 'https://www.googleapis.com/youtube/v3/videos?id='+videoId+'&part=snippet,contentDetails,status&key=AIzaSyBdVTgDKI28TVldzE_JNKJpkDnTHRkANPY&callback=JSON_CALLBACK')
+        .success(function(response) {
+          arrVids.push(response.items[0]);
+          console.log(response.items[0]);
+        });
+      };
+      $scope.videos = arrVids;
+      $scope.getVideos();
+    }
+  ])
+  
+  

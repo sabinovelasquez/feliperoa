@@ -3,7 +3,8 @@
 @import 'header';
 
 .news{
-	background: url('../img/black_denim.png');
+  background: url('../img/black_denim.png');
+  // background: url('../img/black-orchid.png') blue;
 	color: white;
 	h2{
 		color: $yellow
@@ -14,7 +15,7 @@
   a{
     color:$yellow;
     &:hover{
-      
+
     }
   }
 }
