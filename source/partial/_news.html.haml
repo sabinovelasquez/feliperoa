@@ -1,20 +1,28 @@
-%section.news{ :'ng-controller' => 'socialCtrl' }
+%section.news
 	.container
 		%h2.text-center
 			News
 		.row
-			.col-sm-6
+			.fb.col-sm-6{ :'ng-controller' => 'fbCtrl' }
 				%h3.text-center
 					%i.fa.fa-facebook
-			.col-sm-6
+				%p.text-center{ :'ng-hide' => 'fbfeed' }
+					Loading timeline...
+				.narrow
+					.item{ :'ng-repeat' => 'post in fbfeed | limitTo: 5 ' }
+						%p.text-center
+							.tweet{ :'ng-bind-html' => 'post.message | linkyfb' }
+							.date.text-center{ :'ng-bind-html' => 'post.created_time | dateformat' }
+						%hr
+			.tw.col-sm-6{ :'ng-controller' => 'twCtrl' }
 				%h3.text-center
 					%i.fa.fa-twitter
-				%p.text-center{ :'ng-hide' => 'feed' }
+				%p.text-center{ :'ng-hide' => 'twfeed' }
 					Loading tweets...
-				#tweets.narrow
-					.item{ :'ng-repeat' => 'tweet in feed.tweets | limitTo: 5 ' }
+				.narrow
+					.item{ :'ng-repeat' => 'tweet in twfeed.tweets | limitTo: 5 ' }
 						%p.text-center
-							.tweet{ :'ng-bind-html' => 'tweet.text | linky' }
+							.tweet{ :'ng-bind-html' => 'tweet.text | linkytw' }
 							.date.text-center
 								{{tweet.updated}}
 						%hr

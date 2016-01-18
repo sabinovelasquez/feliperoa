@@ -5,5 +5,6 @@
 //=require vendor/angular/angular-ui-bootstrap-modal
 //=require vendor/ui-bootstrap-tpls-0.14.3.min
 //=require vendor/ng-tweets
+//=require vendor/moment.min
 //= require underscore
 //= require_tree ./lib
