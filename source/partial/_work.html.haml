@@ -13,12 +13,12 @@
         .col-xs-3.vid
           .hover
             %i.fa.fa-play
-          %img.img-responsive{ :'ng-src' => '{{ video.snippet.thumbnails.default.url }}' }
+          %img.img-responsive{ :'ng-src' => '{{ video.thumbnails.default.url }}' }
         .col-xs-9
           %h4
-            {{ video.snippet.title }}
+            {{ video.title }}
           %p
-            {{ video.snippet.description | limitTo: 50}}
-            %small{ :'ng-show' => 'video.snippet.description.length > 50' }...
+            {{ video.description | limitTo: 50}}
+            %small{ :'ng-show' => 'video.description.length > 50' }...
 
           %hr

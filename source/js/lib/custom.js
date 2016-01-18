@@ -123,13 +123,22 @@ var app = angular
       $scope.getVideoId = function(videoId) {
         $http.jsonp( 'https://www.googleapis.com/youtube/v3/videos?id='+videoId+'&part=snippet,contentDetails,status&key=AIzaSyBdVTgDKI28TVldzE_JNKJpkDnTHRkANPY&callback=JSON_CALLBACK')
         .success(function(response) {
-          arrVids.push(response.items[0]);
-          console.log(response.items[0]);
+          arrVids.push(response.items[0].snippet);
         });
       };
       $scope.videos = arrVids;
       $scope.getVideos();
     }
   ])
+  .controller('instagramCtrl', [ '$scope', '$http',
+    function($scope, $http) {
+      var instagram_json = 'https://api.instagram.com/v1/users/27730958/media/recent/?client_id=8a5f05fceb2c42299239597c6ded2f8e&count=24&callback=JSON_CALLBACK'
+      $http.jsonp( instagram_json )
+        .success(function(response) {
+          $scope.photos = response.data;
+          console.log(response.data)
+        });
+    }
+  ]);
   
   

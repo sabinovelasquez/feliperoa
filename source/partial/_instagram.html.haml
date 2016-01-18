@@ -1,0 +1,11 @@
+%section.instagram{ :'ng-controller' => 'instagramCtrl' }
+  .container
+    %h2.text-center
+      Instagram
+    .insta
+      .col-sm-12
+        %p.text-center{ :'ng-hide' => 'photos' }
+          Loading instagram...
+      .col-xs-4.col-sm-1.photo{ :'ng-repeat' => 'photo in photos' }
+        %a{ :'href' => '{{photo.link}}', :'target' => '_blank' }
+          %img.img-responsive{ :'ng-src' => '{{photo.images.thumbnail.url}}' }
