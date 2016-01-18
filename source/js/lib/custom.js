@@ -25,8 +25,7 @@ var app = angular
   ])
   .filter('dateformat', ['$sce',
     function ($sce) {
-      return function (str) {
-        // var date = moment(str).startOf('day').fromNow();    
+      return function (str) {    
         var date = moment(str).format('ll');
         var ndate = date.split(',');
         date = ndate[0];

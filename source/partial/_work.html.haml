@@ -10,9 +10,11 @@
       %h3.text-center
         %i.fa.fa-youtube
       .video{ :'ng-repeat' => 'video in videos ' }
-        .col-sm-4
+        .col-xs-3.vid
+          .hover
+            %i.fa.fa-play
           %img.img-responsive{ :'ng-src' => '{{ video.snippet.thumbnails.default.url }}' }
-        .col-sm-8
+        .col-xs-9
           %h4
             {{ video.snippet.title }}
           %p
