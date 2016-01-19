@@ -6,6 +6,6 @@
       .col-sm-12
         %p.text-center{ :'ng-hide' => 'photos' }
           Loading instagram...
-      .col-xs-4.col-sm-1.photo{ :'ng-repeat' => 'photo in photos' }
+      .col-xs-6.col-sm-3.photo{ :'ng-repeat' => 'photo in photos', :'ng-style' => '{"background":"url({{photo.images.standard_resolution.url}})"}' }
         %a{ :'href' => '{{photo.link}}', :'target' => '_blank' }
-          %img.img-responsive{ :'ng-src' => '{{photo.images.thumbnail.url}}' }
+          %img.img-responsive{ :'ng-src' => '{{photo.images.standard_resolution.url}}' }

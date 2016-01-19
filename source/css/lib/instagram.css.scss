@@ -5,18 +5,25 @@
   background: url('../img/black_denim.png');
   .photo{
     @include transition(all .3s ease);
+    background-size:150%!important;
+    background-position:center!important;
     margin:0;
     padding: 0;
+    // border:1px solid $yellow;
     -webkit-filter: grayscale(1);
     -moz-filter: grayscale(1);
     -o-filter: grayscale(1);
     -ms-filter: grayscale(1);
     &:hover{
+      background-size:100%!important;
       -webkit-filter: grayscale(0);
       -moz-filter: grayscale(0);
       -o-filter: grayscale(0);
       -ms-filter: grayscale(0);
       opacity: .4;
+    }
+    img{
+      opacity:0;
     }
   }
   h2{

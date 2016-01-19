@@ -134,10 +134,11 @@ var app = angular
   ])
   .controller('instagramCtrl', [ '$scope', '$http',
     function($scope, $http) {
-      var instagram_json = 'https://api.instagram.com/v1/users/27730958/media/recent/?client_id=8a5f05fceb2c42299239597c6ded2f8e&count=24&callback=JSON_CALLBACK'
+      var instagram_json = 'https://api.instagram.com/v1/users/27730958/media/recent/?client_id=8a5f05fceb2c42299239597c6ded2f8e&count=8&callback=JSON_CALLBACK'
       $http.jsonp( instagram_json )
         .success(function(response) {
           $scope.photos = response.data;
+          console.log($scope.photos);
         });
     }
   ]);

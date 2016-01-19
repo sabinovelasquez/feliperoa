@@ -43,4 +43,12 @@ header{
 	    	background: rgba(#000, 1);
 	    }
 	}
+	.subtitle{
+		text-align:right;
+		margin-right:20px;
+		margin-bottom:20px;
+		a{
+			color:$yellow;
+		}
+	}
 }
