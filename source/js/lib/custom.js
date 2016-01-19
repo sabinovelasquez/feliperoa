@@ -138,7 +138,6 @@ var app = angular
       $http.jsonp( instagram_json )
         .success(function(response) {
           $scope.photos = response.data;
-          console.log($scope.photos);
         });
     }
   ]);

@@ -1,4 +1,4 @@
-%section.work
+%section.work#work
   .container
     %h2.text-center
       My Work 
@@ -17,7 +17,7 @@
         %i.fa.fa-youtube
         %small
           %i.fa.fa-star
-      .video{ :'ng-repeat' => 'video in videos ' }
+      .video{ :'ng-repeat' => 'video in videos | limitTo : 4' }
         .col-xs-3.vid
           .hover
             %i.fa.fa-play
@@ -31,3 +31,6 @@
             %small{ :'ng-show' => 'video.description.length > 50' }...
 
           %hr
+      .subscribe
+        %script{ :'src' => 'https://apis.google.com/js/platform.js' }
+        .g-ytsubscribe{ :'data-channelid' => 'UCwQNQR-59PltETBr4u59ZmQ', :'data-layout' => 'default', :'data-count' => 'default' }

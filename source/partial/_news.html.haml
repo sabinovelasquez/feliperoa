@@ -1,4 +1,4 @@
-%section.news
+%section.news#news
 	.container
 		%h2.text-center
 			News
@@ -18,6 +18,7 @@
 							.tweet{ :'ng-bind-html' => 'post.message | linkyfb' }
 							.date.text-center{ :'ng-bind-html' => 'post.created_time | dateformat' }
 						%hr
+					.fb-like{ :'data-share' => 'true', :'data-show-faces' => 'true', :'data-width' => '450' }
 			.tw.col-sm-6{ :'ng-controller' => 'twCtrl' }
 				%h3.text-center
 					%small
@@ -34,3 +35,5 @@
 							.date.text-center
 								{{tweet.updated}}
 						%hr
+					%a.twitter-follow-button{ :'href' => 'https://twitter.com/Roa5150', :'data-show-count' => 'false', :'data-show-screen-name' => 'false' }
+						Follow @Roa5150

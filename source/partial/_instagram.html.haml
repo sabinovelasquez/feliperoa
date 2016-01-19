@@ -1,4 +1,4 @@
-%section.instagram{ :'ng-controller' => 'instagramCtrl' }
+%section.instagram#instagram{ :'ng-controller' => 'instagramCtrl' }
   .container
     %h2.text-center
       Instagram
@@ -9,3 +9,6 @@
       .col-xs-6.col-sm-3.photo{ :'ng-repeat' => 'photo in photos', :'ng-style' => '{"background":"url({{photo.images.standard_resolution.url}})"}' }
         %a{ :'href' => '{{photo.link}}', :'target' => '_blank' }
           %img.img-responsive{ :'ng-src' => '{{photo.images.standard_resolution.url}}' }
+      %a.btn.instafollow{ :'href' => 'https://www.instagram.com/felipe.roa.guitar/', :'target' => '_blank' }
+        %i.fa.fa-instagram
+        follow me

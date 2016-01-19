@@ -1,5 +1,6 @@
 @import 'functions';
 @import 'colors';
+@import 'navbar';
 @import 'header';
 @import 'about';
 @import 'news';
@@ -17,4 +18,14 @@ h1, h2, h3, h4, h5{
 section{
 	margin: 40px 0 40px 0;
 	padding: 40px 0 40px 0;
+	h3{
+		small{
+			font-size: 12px;
+		}
+	}
+}
+.btn{
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
 }

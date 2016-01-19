@@ -1,0 +1,50 @@
+@import 'functions';
+@import 'colors';
+
+.navbar{
+	@include transition(opacity .3s ease);
+	background:rgba(black, .6);
+	border:none;
+	opacity:0;
+	&.active{
+		opacity:1;
+	}
+	.navbar-brand{
+		text-transform: uppercase;
+		font-family: 'Fjalla One', sans-serif;
+		color:$yellow;
+		&:hover, &:focus{
+			color:$yellow;
+		}
+	}
+	.navbar-toggle:focus, .navbar-toggle:hover{
+		background:black;
+	}
+	button{
+		border:none;
+		color:$yellow;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		&:hover{
+			background:black;
+		}
+	}
+	ul.nav{
+		li{
+			@include transition(all .3s ease);
+			cursor:pointer;
+			&.active{
+
+				background: $yellow;
+			}
+			a{
+				color:white;
+				&:hover{
+					color:$yellow;
+				}
+				background-color:transparent!important;
+			}
+		}
+	}
+}

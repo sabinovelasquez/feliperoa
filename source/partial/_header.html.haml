@@ -1,11 +1,11 @@
-%header{ :'ng-style'=> '{"background":"url(img/cover1.jpg)"}', :'parallax-background' => 'parallax-background', :'parallax-ratio' => '-0.2' }
+%header#top{ :'ng-style'=> '{"background":"url(img/cover1.jpg)"}', :'parallax-background' => 'parallax-background', :'parallax-ratio' => '-0.2' }
 	.title
 		%h1.text-center
 			Felipe Roa
 		%h2.text-center
 			Musician & Multimedia Artist
 
-		.btn.text-center
+		.btn.text-center{ :'href' => '#about', :'du-smooth-scroll' => 'du-smooth-scroll', :'duration' => '800', :'du-scrollspy' => 'du-scrollspy'}
 			enter site
 			%i.fa.fa-angle-double-down
 	.subtitle
