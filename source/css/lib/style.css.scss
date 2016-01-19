@@ -8,7 +8,8 @@
 @import 'instagram';
 @import 'contact';
 
-body{
+body, html{
+  height:100%;
 	font-family: 'Cantarell', sans-serif;
 }
 h1, h2, h3, h4, h5{

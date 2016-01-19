@@ -1,6 +1,6 @@
-%section.about#about
+%section.about#about{ :'ng-controller' => 'aboutCtrl' }
 	.container
 		%h2.text-center
 			About Me
-		%p.text-center
-			This is the "about me" section text.
+		%p.text-center{:'ng-bind-html' => 'description_html | scplayer'}
+			

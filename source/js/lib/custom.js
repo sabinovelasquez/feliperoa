@@ -1,8 +1,49 @@
 'use strict';
-
+'https://www.facebook.com/media/set/?set=a.1018174751586914.1073741827.330384133699316&type=3'
 var app = angular
 
 	.module('app', ['ngAnimate','ui.bootstrap', 'angular-parallax', 'duScroll', 'ngTweets'])
+  .factory('QueueService', [ '$rootScope',
+    function ($rootScope) {
+      var queue = new createjs.LoadQueue(true);
+  
+      function loadManifest(manifest) {
+          queue.loadManifest(manifest);
+  
+          queue.on('progress', function (event) {
+              $rootScope.$broadcast('queueProgress', event);
+          });
+  
+          queue.on('complete', function () {
+              $rootScope.$broadcast('queueComplete', manifest);
+          });
+      }
+  
+      return {
+          loadManifest: loadManifest
+      }
+    }
+  ])
+  .animation('.slide-animation', [ '$window',
+    function ($window) {
+      return {
+          enter: function (element, done) {
+              var startPoint = $window.innerWidth * 0.5,
+                  tl = new TimelineLite();
+              
+              tl.fromTo(element.find('.bg'), 1, { alpha: 0}, {alpha: 1})
+              .fromTo(element.find('.subtitle'), 3, { marginLeft: -20, alpha: 0}, {marginLeft: 0, alpha: 1, ease: Ease.easeInOut, onComplete: done});
+  
+          },
+  
+          leave: function (element, done) {
+              var tl = new TimelineLite();
+  
+              tl.to(element, 1, {alpha: 0, onComplete: done});
+          }
+      };
+    }
+  ])
   .filter('scplayer', ['$sce',
     function ($sce) {
       return function (str) {
@@ -51,6 +92,93 @@ var app = angular
       }
     }
   ])
+  .controller('headerCtrl', [ '$scope', '$http', '$timeout', 'QueueService',
+    function($scope, $http, $timeout, QueueService) {
+      var fbUrl = 'https://graph.facebook.com/1018174751586914/photos?access_token=1411529029115730|0zfGXNTWB508RC3Z6JvR4UisYDM&callback=JSON_CALLBACK',
+          INTERVAL = 8000,
+          slides = [];
+      $scope.getCover = function() {
+        $http.jsonp( fbUrl )
+        .success(function(json) {
+          var slidesArr = json.data;
+          
+          angular.forEach(slidesArr, function(value, key){
+            var img = {};
+            
+            var tempname= value.name;
+            img.src = value.images[0].source;
+
+            if(tempname){
+              tempname= value.name.split(',');  
+              img.name = tempname[0];
+              img.url = tempname[1];
+            }
+            if( img.src ){
+              slides.push(img);
+            }
+            
+          });
+          loadSlides();
+          // $scope.fbfeed = posts; encodeURIComponent(imgs[i].name)decodeURIComponent(photo[1])
+          
+        });
+      };
+      
+
+      function setCurrentSlideIndex(index) {
+          $scope.currentIndex = index;
+      }
+
+      function isCurrentSlideIndex(index) {
+          return $scope.currentIndex === index;
+      }
+
+      function nextSlide() {
+          $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+          $timeout(nextSlide, INTERVAL);
+      }
+
+      function setCurrentAnimation(animation) {
+          $scope.currentAnimation = animation;
+      }
+
+      function isCurrentAnimation(animation) {
+          return $scope.currentAnimation === animation;
+      }
+
+      function loadSlides() {
+          QueueService.loadManifest(slides);
+      }
+
+      $scope.$on('queueProgress', function (event, queueProgress) {
+          $scope.$apply(function () {
+              $scope.progress = queueProgress.progress * 100;
+          });
+      });
+
+      $scope.$on('queueComplete', function (event, slides) {
+          $scope.$apply(function () {
+              $scope.slides = slides;
+              $scope.loaded = true;
+
+              $timeout(nextSlide, INTERVAL);
+          });
+      });
+
+      $scope.progress = 0;
+      $scope.loaded = false;
+      $scope.currentIndex = 0;
+      $scope.currentAnimation = 'slide-left-animation';
+
+      $scope.setCurrentSlideIndex = setCurrentSlideIndex;
+      $scope.isCurrentSlideIndex = isCurrentSlideIndex;
+      $scope.setCurrentAnimation = setCurrentAnimation;
+      $scope.isCurrentAnimation = isCurrentAnimation;
+
+      $scope.getCover();
+    }
+    
+  ])
 	.controller('gralCtrl', [ '$scope', '$document', 
 		function($scope, $document) {
 			$scope.head = false;
@@ -78,9 +206,21 @@ var app = angular
       $scope.getTweets();
     }
   ])
+  .controller('aboutCtrl', [ '$scope', '$http',
+    function($scope, $http) {
+      var fbUrl = 'https://graph.facebook.com/330384133699316/?fields=description_html&access_token=1678105279117334|492e729a21cc860f8694fe84c03a755c&callback=JSON_CALLBACK';
+      $scope.getDesc = function() {
+        $http.jsonp( fbUrl )
+        .success(function(response) {
+          $scope.description_html = response.description_html;
+        });
+      };
+      $scope.getDesc();
+    }
+  ])
   .controller('fbCtrl', [ '$scope', '$http',
     function($scope, $http) {
-      var fbUrl = 'https://graph.facebook.com/330384133699316/feed?access_token=1411529029115730|0zfGXNTWB508RC3Z6JvR4UisYDM&callback=JSON_CALLBACK';
+      var fbUrl = 'https://graph.facebook.com/330384133699316/feed?access_token=1678105279117334|492e729a21cc860f8694fe84c03a755c&callback=JSON_CALLBACK';
       $scope.getPosts = function() {
         $http.jsonp( fbUrl )
         .success(function(response) {

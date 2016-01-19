@@ -1,4 +1,6 @@
-%header#top{ :'ng-style'=> '{"background":"url(img/cover1.jpg)"}', :'parallax-background' => 'parallax-background', :'parallax-ratio' => '-0.2' }
+%header{ :'ng-controller' => 'headerCtrl' }
+	.loading{ :'ng-if' => 'progress !== 100' }
+		{{progress | number:0}}%
 	.title
 		%h1.text-center
 			Felipe Roa
@@ -8,8 +10,14 @@
 		.btn.text-center{ :'href' => '#about', :'du-smooth-scroll' => 'du-smooth-scroll', :'duration' => '800', :'du-scrollspy' => 'du-scrollspy'}
 			enter site
 			%i.fa.fa-angle-double-down
-	.subtitle
-		%small
-			photography by
-			%a{ :'href' => 'http://evilrobbphotography.zenfolio.com/', :'target' => '_blank' }
-				Evil Robb Photography
+
+	#top.slide.slide-animation{ :'ng-if' => 'isCurrentSlideIndex($index)', :'ng-show' => 'loaded', :'ng-repeat' => 'slide in slides' }
+		.subtitle
+			%small{ :'ng-show' => '{{slide.name.length>1}}' }
+				photography by
+				%a{ :'href' => '{{slide.url}}', :'target' => '_blank', :'ng-show' => '{{slide.url.length>0}}' }
+					{{slide.name}}
+				%span{ :'ng-show' => '{{slide.url.length<1}}' }
+					{{slide.name}}
+		%img.bg{ :'bg-image' => 'bg-image', :'ng-src' => '{{slide.src}}', :'parallax' => 'parallax', :'parallax-ratio' => '0.4' }
+		
