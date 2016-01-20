@@ -1,4 +1,4 @@
-%section.contact#contact
+%section.contact#contact{ :'parallax-background' => 'parallax-background', :'parallax-ratio' => '-0.6' }
   .container
     %h2.text-center
       Contact me
@@ -9,15 +9,18 @@
         %i.fa.fa-user
         %small
           %i.fa.fa-star
-    .col-sm-6
-      %a.btn.text-center.gmail{ :'href' => 'mailto:feliperoa@gmail.com' }
-        %h4
-          %i.fa.fa-envelope
-          %br
+    .col-sm-4
+    .col-sm-4
+      %a.text-center{ :'href' => 'mailto:feliperoa@gmail.com' }
+        .gmail
+          .red-box
+          .right-border
+          .cream-box
+          .line.right
+          .left-border
+          .gray-triangle
+          .fold.left
+          .fold.right
+        %span
           feliperoa@gmail.com
-    .col-sm-6
-      %a.btn.text-center.linkedin{ :'href' => 'https://www.linkedin.com/in/feliperoa', :'target' => '_blank' }
-        %h4
-          %i.fa.fa-linkedin
-          %br
-          feliperoa at linkedin
+    .col-sm-4

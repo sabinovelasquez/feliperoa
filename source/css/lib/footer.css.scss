@@ -1,7 +1,9 @@
+@import 'functions';
+@import 'colors';
 footer{
-  margin-top: 100px;
-  background: black;
-  color: white;
+	border-top: 1px solid $yellow;
+	background: black;
+	color: white;
   p{
     padding: 10px 0;
     margin: 0;

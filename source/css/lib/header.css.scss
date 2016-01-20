@@ -52,18 +52,24 @@ header{
   }
   h2{
     font-family: 'Cantarell', sans-serif;
-    text-transform: none;
     font-size: 1.8em;
     margin: 0;
     line-height: 0;
+    letter-spacing: 9px;
+    text-indent: 7px;
+    height: 20px;
+    small{
+      color:white;
+    }
   }
   .btn{
+    cursor: default;
       width: 200px;
       color:white;
       position: relative;
       opacity: 0;
-    left: 50%;
-    margin: 40px 0 0 -100px;
+      left: 50%;
+      margin: 40px 0 0 -100px;
       background: rgba(#000, .6);
       @include transition(all .3s ease);
       i{

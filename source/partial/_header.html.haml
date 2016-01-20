@@ -5,8 +5,11 @@
 		%h1.text-center
 			Felipe Roa
 		%h2.text-center
-			Musician & Multimedia Artist
-
+			%small
+				%i.fa.fa-star
+			Guitarist
+			%small
+				%i.fa.fa-star
 		.btn.text-center{ :'href' => '#about', :'du-smooth-scroll' => 'du-smooth-scroll', :'duration' => '800', :'du-scrollspy' => 'du-scrollspy'}
 			enter site
 			%i.fa.fa-angle-double-down
@@ -17,7 +20,7 @@
 				photography by
 				%a{ :'href' => '{{slide.url}}', :'target' => '_blank', :'ng-show' => '{{slide.url.length>0}}' }
 					{{slide.name}}
-				%span{ :'ng-show' => '{{slide.url.length<1}}' }
+				%span{ :'ng-show' => '{{!slide.url}}' }
 					{{slide.name}}
 		%img.bg{ :'bg-image' => 'bg-image', :'ng-src' => '{{slide.src}}', :'parallax' => 'parallax', :'parallax-ratio' => '0.4' }
 		
