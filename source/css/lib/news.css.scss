@@ -18,4 +18,36 @@
 
     }
   }
+  .item{
+    position: relative;
+    .tweet{
+      text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    }
+    .tweet{
+      position: relative;
+      z-index: 2;
+    }
+    .fb-pic{
+      @include transition(all .3s ease);
+      position: absolute;
+      bottom: 14px;
+      right: 0;
+      max-height: 90%;
+      -webkit-filter: grayscale(1);
+      -moz-filter: grayscale(1);
+      -o-filter: grayscale(1);
+      -ms-filter: grayscale(1);
+      opacity: .5;
+    }
+
+    &:hover{
+      .fb-pic{
+        -webkit-filter: grayscale(0);
+        -moz-filter: grayscale(0);
+        -o-filter: grayscale(0);
+        -ms-filter: grayscale(0);
+      }
+    }
+  }
+  
 }
