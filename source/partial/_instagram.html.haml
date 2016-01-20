@@ -7,8 +7,8 @@
         %p.text-center{ :'ng-hide' => 'photos' }
           Loading instagram...
       .col-xs-6.col-sm-3.photo{ :'ng-repeat' => 'photo in photos', :'ng-style' => '{"background":"url({{photo.images.standard_resolution.url}})"}' }
-        %a{ :'href' => '{{photo.link}}', :'target' => '_blank' }
+        %a{ :'href' => '{{photo.link}}', :'target' => '_blank', :'analytics-on' => 'click', :'analytics-event' => 'instagram click: {{photo.caption.text}}', :'analytics-category' => 'instagram' }
           %img.img-responsive{ :'ng-src' => '{{photo.images.standard_resolution.url}}' }
-      %a.btn.instafollow{ :'href' => 'https://www.instagram.com/felipe.roa.guitar/', :'target' => '_blank' }
+      %a.btn.instafollow{ :'href' => 'https://www.instagram.com/felipe.roa.guitar/', :'target' => '_blank', :'analytics-on' => 'click', :'analytics-event' => 'instagram follow', :'analytics-category' => 'instagram' }
         %i.fa.fa-instagram
         follow

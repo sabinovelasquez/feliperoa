@@ -21,7 +21,7 @@
         .col-xs-3.vid
           .hover
             %i.fa.fa-play
-            %a{ :'href' => 'http://youtube.com/watch?v={{ video.id }}', :'target' => '_blank' }
+            %a{ :'href' => 'http://youtube.com/watch?v={{ video.id }}', :'target' => '_blank', :'analytics-on' => 'click', :'analytics-event' => 'go to video: http://youtube.com/watch?v={{ video.id }}', :'analytics-category' => 'youtube'  }
               %img.img-responsive{ :'ng-src' => '{{ video.thumbnails.default.url }}' }
         .col-xs-9
           %h4

@@ -2,7 +2,7 @@
 
 var app = angular
 
-	.module('app', ['ngAnimate','ui.bootstrap', 'angular-parallax', 'duScroll', 'ngTweets'])
+	.module('app', ['ngAnimate','ui.bootstrap', 'angular-parallax', 'duScroll', 'ngTweets', 'angulartics', 'angulartics.google.analytics'])
   .factory('QueueService', [ '$rootScope',
     function ($rootScope) {
       var queue = new createjs.LoadQueue(true);

@@ -18,7 +18,7 @@
 							.tweet{ :'ng-bind-html' => 'post.message | linkyfb' }
 							%img.fb-pic{ :'ng-src' => '{{post.picture}}', :'ng-if' => 'post.picture' }
 							.small{ :'ng-if' => 'post.story' }
-								%a{ :'href' => 'http://facebook.com/{{post.id | fb_link}}', :'target' => '_blank' }
+								%a{ :'href' => 'http://facebook.com/{{post.id | fb_link}}', :'target' => '_blank', :'analytics-on' => 'click', :'analytics-event' => 'go to facebook postId: {{post.id}}', :'analytics-category' => 'facebook' }
 									View post	
 									%i.fa.fa-external-link
 							.date.text-center{ :'ng-bind-html' => 'post.created_time | dateformat' }
@@ -41,5 +41,5 @@
 							.date.text-center
 								{{tweet.updated}}
 						%hr
-					%a.twitter-follow-button{ :'href' => 'https://twitter.com/Roa5150', :'data-show-count' => 'false', :'data-show-screen-name' => 'false', :'data-lang'=> 'en' }
+					%a.twitter-follow-button{ :'href' => 'https://twitter.com/Roa5150', :'data-show-count' => 'false', :'data-show-screen-name' => 'false', :'data-lang'=> 'en', :'analytics-on' => 'click', :'analytics-event' => 'twitter follow', :'analytics-category' => 'twitter' }
 						Follow @Roa5150
