@@ -1,5 +1,5 @@
 'use strict';
-'https://www.facebook.com/media/set/?set=a.1018174751586914.1073741827.330384133699316&type=3'
+
 var app = angular
 
 	.module('app', ['ngAnimate','ui.bootstrap', 'angular-parallax', 'duScroll', 'ngTweets'])
@@ -225,11 +225,13 @@ var app = angular
   ])
   .controller('aboutCtrl', [ '$scope', '$http',
     function($scope, $http) {
-      var fbUrl = 'https://graph.facebook.com/330384133699316/?fields=description_html&access_token=1678105279117334|492e729a21cc860f8694fe84c03a755c&callback=JSON_CALLBACK';
+      var fbUrl = 'https://graph.facebook.com/330384133699316/?fields=description_html&access_token=1411529029115730|0zfGXNTWB508RC3Z6JvR4UisYDM&callback=JSON_CALLBACK';
       $scope.getDesc = function() {
         $http.jsonp( fbUrl )
         .success(function(response) {
+
           $scope.description_html = response.description_html;
+
         });
       };
       $scope.getDesc();
@@ -237,12 +239,13 @@ var app = angular
   ])
   .controller('fbCtrl', [ '$scope', '$http',
     function($scope, $http) {
-      var fbUrl = 'https://graph.facebook.com/330384133699316/feed?access_token=1678105279117334|492e729a21cc860f8694fe84c03a755c&callback=JSON_CALLBACK';
+      var fbUrl = 'https://graph.facebook.com/330384133699316/feed?access_token=1411529029115730|0zfGXNTWB508RC3Z6JvR4UisYDM&callback=JSON_CALLBACK';
       $scope.getPosts = function() {
         $http.jsonp( fbUrl )
         .success(function(response) {
           var posts = _.reject(response.data, function(msj){ return !msj.message; });
           $scope.fbfeed = posts;
+        
         });
       };
       $scope.getPosts();
