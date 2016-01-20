@@ -64,6 +64,23 @@ var app = angular
       }
     }
   ])
+  .filter('html', ['$sce',
+    function ($sce) {
+      return function (str) {    
+        var breaklines = (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ '<br>' +'$2');
+        return $sce.trustAsHtml(breaklines);
+      }
+    }
+  ])
+  .filter('fb_link', ['$sce',
+    function ($sce) {
+      return function (str) {    
+        var postid = str.split('_');
+        var url = postid[0]+'/posts/'+postid[1];
+        return $sce.trustAsHtml(url);
+      }
+    }
+  ])
   .filter('dateformat', ['$sce',
     function ($sce) {
       return function (str) {    
@@ -87,8 +104,8 @@ var app = angular
         var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
         str = str.replace(exp, "<a href='$1' target='_blank'>$1</a>");
         exp = /(^|\s)\n(\w+)/g;
-        str = str.replace(exp, "<br>");
-        return $sce.trustAsHtml(str);
+        var breaklines = (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ '<br>' +'$2');
+        return $sce.trustAsHtml(breaklines);
       }
     }
   ])
