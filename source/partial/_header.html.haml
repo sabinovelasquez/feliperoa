@@ -18,7 +18,7 @@
 		.subtitle
 			%small{ :'ng-show' => '{{slide.name.length>1}}' }
 				photography by
-				%a{ :'href' => '{{slide.url}}', :'target' => '_blank', :'ng-show' => '{{slide.url.length>0}}' }
+				%a{ :'href' => '{{slide.url}}', :'target' => '_blank', :'ng-show' => '{{slide.url.length>0}}', :'analytics-on' => 'click', :'analytics-event' => 'go to photographer: {{slide.name}}', :'analytics-category' => 'header_photos'  }
 					{{slide.name}}
 				%span{ :'ng-show' => '{{!slide.url}}' }
 					{{slide.name}}
