@@ -16,6 +16,7 @@
 					.item{ :'ng-repeat' => 'post in fbfeed | limitTo: 5 ' }
 						%p.text-center
 							.tweet{ :'ng-bind-html' => 'post.message | linkyfb' }
+							%img.fb-pic{ :'ng-src' => '{{post.picture}}', :'ng-if' => 'post.picture' }
 							.small{ :'ng-if' => 'post.story' }
 								%a{ :'href' => 'http://facebook.com/{{post.id | fb_link}}', :'target' => '_blank' }
 									View post	
@@ -23,7 +24,7 @@
 							.date.text-center{ :'ng-bind-html' => 'post.created_time | dateformat' }
 							 
 						%hr
-					.fb-like{ :'data-share' => 'true', :'data-show-faces' => 'true', :'data-width' => '450' }
+					.fb-like{ :'data-share' => 'true', :'data-show-faces' => 'true', :'data-width' => '320' }
 			.tw.col-sm-6{ :'ng-controller' => 'twCtrl' }
 				%h3.text-center
 					%small
