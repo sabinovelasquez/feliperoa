@@ -12,7 +12,17 @@
 body, html{
   height:100%;
 	font-family: 'Cantarell', sans-serif;
+  ::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: $yellow;
+  }
+
+  ::selection {
+    color: white;
+    background: $yellow;
+  }
 }
+
 h1, h2, h3, h4, h5{
 	text-transform: uppercase;
 	font-family: 'Fjalla One', sans-serif;
